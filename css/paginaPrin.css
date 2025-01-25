@@ -8,6 +8,19 @@
     background-color: black;
     color: white;
     font-family: "Poppins", sans-serif;
+    scroll-behavior: smooth;
+  }
+  
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background-color: white;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: #004aad;
   }
   
   .barrita {
@@ -39,6 +52,7 @@
     font-family: "Poppins", sans-serif;
     height: 6vh;
     width: 7vw;
+    cursor: pointer;
     
   }
 
@@ -149,6 +163,7 @@
     font-size: 15px;
     letter-spacing: 1px;
     font-family: "Poppins", sans-serif;
+    cursor: pointer;
   }
   
   .caracteristicas {
@@ -341,24 +356,7 @@
     .poster__details > h6 {
       font-size: 14px;
     }
-    .FAQ__title {
-      font-size: 20px;
-    }
-    .FAQ__heading {
-      font-size: 38px;
-      font-weight: 500;
-      letter-spacing: 1px;
-    }
-    .FAQ__list {
-      padding: 1rem 5rem;
-    }
-    .FAQ__get__started__email {
-      width: 75%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      transform: translateX(15%);
-    }
+   
   }
   
   @media (min-width: 1024px) {
@@ -435,12 +433,6 @@
     }
     .poster__container {
       width: 20%;
-    }
-    .FAQ__list {
-      padding: 1rem 25rem;
-    }
-    .FAQ__get__started__email {
-      transform: translateX(16%);
     }
     footer {
       padding: 2rem 20rem;

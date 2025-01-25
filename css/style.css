@@ -1,12 +1,16 @@
-/* CSS VARIABLES */
+
+/* PAGINA INICIO */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+.wrapper {
+  margin: 0;
+  padding: 0;
+}
 
 html, body {
-  width: 100vw;
   min-height: 100vh;
   margin: 0;
   padding: 0;
@@ -16,6 +20,24 @@ html, body {
   background-color: black;
   color: white;
   font-family: "Poppins", sans-serif;
+  scroll-behavior: smooth;
+}
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: white;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #004aad;
 }
 
 img {
@@ -26,14 +48,9 @@ h1 {
   padding-top: 60px;  
 }
 
-.wrapper {
-  margin: 0;
-  padding: 0;
-}
 
 /* HEADER */
 header {
-  padding: 20px 20px 0 20px;
   position: fixed;
   top: 0;
   display: grid;  
@@ -41,34 +58,28 @@ header {
   grid-template-columns: 1fr 4fr 1fr;
   grid-template-areas: 
    "nt mn mn sb . . . "; 
-  background-color: var(--primary);
-  width: 100%;
-  margin-bottom: 0px;  
+  background-color: rgba(0, 0, 0, 0.822);
+  align-items: center;
+  font-family: "Poppins", sans-serif;
+  z-index: 5;
+  
 }
 
 .netflixLogo {
-  grid-area: nt;
-  object-fit: cover;
-  width: 100px;
+  width: 100%;
   max-height: 100%;
-  
-  padding-left: 30px;
-  padding-top: 0px;  
+  text-align: center;  
 }
 
 .netflixLogo img {  
-  height: 35px;     
+  height: 60%; 
+  width: 70%;  
+  margin-top: 3px;
 }
 
-#logo {
-  color: #E50914;  
+#logo { 
   margin: 0; 
-  padding: 0; 
-}
-
-#Logo img{
-  height:8vh;
-  margin-top: -15px;
+  padding: 0;
 }
 
 .main-nav {
@@ -83,7 +94,7 @@ header {
 }
 
 .main-nav a:hover {
-  color: var(--dark);
+  color: #5596c8;
 }
 
 .sub-nav {
@@ -104,12 +115,13 @@ header {
 
 /* MAIN CONTIANER */
 .main-container {
-  padding: 50px;
+  padding: 20px;
+  width: 100%;
 }
 
 .box {
   display: grid;
-  grid-gap: 20px;
+  grid-gap: 30px;
   grid-template-columns: repeat(6, minmax(100px, 1fr));
 }
 
@@ -126,6 +138,8 @@ header {
 
 .box img {
   border-radius: 2px;
+  height: 100%;
+  width: 100%;
 }
 
 /* LINKS */
@@ -135,25 +149,26 @@ header {
 
 .sub-links ul {
   list-style: none;
-  padding: 0;
   display: grid;
   grid-gap: 20px;
   grid-template-columns: repeat(4, 1fr);
+  margin-top: 5%;
+  text-align: center;
+  font-size: 12px;
+  color: #757575;
+  border-top: 1px solid #333;
 }
 
 .sub-links a {
-  color: var(--dark);
+  color: #757575;
   text-decoration: none;
 }
 
 .sub-links a:hover {
-  color: var(--dark);
-  text-decoration: underline;
+  color: #7575759c;
+  
 }
 
-.logos a{
-  padding: 10px;
-}
 
 .logo {
   color: var(--dark);
@@ -162,10 +177,9 @@ header {
 
 /* FOOTER */
 footer {
-  padding: 20px;
   text-align: center;
-  color: var(--dark);
-  margin: 10px;
+  font-size: 15px;
+  color: #757575;
 }
 
 /* MEDIA QUERIES */
