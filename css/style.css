@@ -17,7 +17,8 @@ html, body {
   box-sizing: border-box;
   line-height: 1.4;
   display: flex;
-  background-color: black;
+  background: url("/Background/fondoNesflis.png");
+  background-size: cover;
   color: white;
   font-family: "Poppins", sans-serif;
   scroll-behavior: smooth;
@@ -37,7 +38,7 @@ html, body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #004aad;
+  background-color: black;
 }
 
 img {
@@ -58,7 +59,7 @@ header {
   grid-template-columns: 1fr 4fr 1fr;
   grid-template-areas: 
    "nt mn mn sb . . . "; 
-  background-color: rgba(0, 0, 0, 0.822);
+   background-color: #000003;
   align-items: center;
   font-family: "Poppins", sans-serif;
   z-index: 5;
@@ -66,7 +67,7 @@ header {
 }
 
 .netflixLogo {
-  width: 100%;
+  width: 80%;
   max-height: 100%;
   text-align: center;  
 }

@@ -1,136 +1,72 @@
-const urlUsuario = "http://localhost:8080/api/usuario"; 
-const urlContenido = "http://localhost:8080/api/contenido";
+const urlUsuario = "http://localhost:8080/api/usuario"; // URL para obtener usuarios
+const urlContenido = "http://localhost:8080/api/contenido"; // URL para obtener contenidos
 
-// PETICION GET
-
-async function peticionGet(url) {
-    try {
-      const respuesta = await fetch(url);
-      if (respuesta.ok) {
-        return await respuesta.json();
-      } else {
-        console.error("Error en la respuesta de la API");
-        return [];
-      }
-    } catch (error) {
-      console.error("Error al realizar la petición:", error);
-      return [];
-    }
-  }
-
-  // PETICION POST 
-
-  async function peticionPost(url, data) {
-    try {
-      const respuesta = await fetch(url, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
-      if (respuesta.ok) {
-        return await respuesta.json();
-      } else {
-        console.error("Error en la respuesta de la API");
-        return null;
-      }
-    } catch (error) {
-      console.error("Error al realizar la petición POST:", error);
-      return null;
-    }
-  }
-
-  // PETICION PUT
-async function peticionPut(url, data) {
+// Función para obtener datos del usuario logueado por ID (ejemplo: ID 3)
+const obtenerUsuarioPorId = async (idUsuario) => {
   try {
-    const respuesta = await fetch(url, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
+    const respuesta = await fetch(`${urlUsuario}/${idUsuario}`);
     if (respuesta.ok) {
       return await respuesta.json();
     } else {
-      console.error("Error en la respuesta de la API");
+      console.error("Error al obtener el usuario");
       return null;
     }
   } catch (error) {
-    console.error("Error al realizar la petición PUT:", error);
+    console.error("Error en la petición de usuario:", error);
     return null;
   }
-}
+};
 
-// PETICION DELETE
-async function peticionDelete(url) {
+// Función para obtener contenido favorito por ID
+const obtenerContenidoPorId = async (idContenido) => {
   try {
-    const respuesta = await fetch(url, { method: "DELETE" });
+    const respuesta = await fetch(`${urlContenido}/${idContenido}`);
     if (respuesta.ok) {
-      return true;
+      return await respuesta.json();
     } else {
-      console.error("Error en la respuesta de la API");
-      return false;
+      console.error("Error al obtener contenido favorito");
+      return null;
     }
   } catch (error) {
-    console.error("Error al realizar la petición DELETE:", error);
-    return false;
+    console.error("Error en la petición de contenido:", error);
+    return null;
   }
-}
+};
 
-        async function obtenerDatosUsuario() {
-            const respuesta = await peticionGet(urlUsuario);
-            if (respuesta) {
-                document.getElementById("profile-name").textContent = respuesta.nombre;
-                document.getElementById("profile-plan").textContent = `Plan: ${respuesta.plan}`;
-                cargarContenidoFavorito(respuesta.contenidoFavorito);
-                cargarValoraciones(respuesta.valoraciones);
-            }
-        }
+const mostrarDatosUsuario = async () => {
+  try {
+    const usuarioId = 2; 
+    const datosUsuario = await obtenerUsuarioPorId(usuarioId);
 
-        // Cargar contenido favorito
-        async function cargarContenidoFavorito(contenido) {
-            const container = document.getElementById("favorite-content");
-            container.innerHTML = "";
+    if (!datosUsuario) return;
+    document.querySelector("#info h1").textContent = datosUsuario.nombre;
+    document.querySelector("#info h3").textContent = datosUsuario.correo;
+    const planContainer = document.querySelector("#planContainer");
+    planContainer.querySelector("h1").textContent = datosUsuario.plan.nombre;
+    planContainer.querySelector("p").textContent = `Calidad de video: ${datosUsuario.plan.calidad_video}, Perfiles: ${datosUsuario.plan.num_perfiles}`;
+    planContainer.querySelector("h3").textContent = `$ ${datosUsuario.plan.precio_mensual}`;
 
-            contenido.forEach(item => {
-                const div = document.createElement("div");
-                div.classList.add("content-item");
-                div.textContent = item.titulo;
-                container.appendChild(div);
-            });
-        }
+    const listaContainer = document.querySelector("#lista-container");
+    for (const perfil of datosUsuario.perfiles) {
+      for (const contenido of perfil.contenidosFavoritos) {
+        const img = document.createElement("img");
+        img.src = contenido.imagen_url; 
+        img.alt = contenido.nombre;
+        listaContainer.appendChild(img);
+      }
+    }
+  } catch (error) {
+    console.error("Error mostrando los datos del usuario:", error);
+  }
+};
 
-        // Cargar valoraciones
-        async function cargarValoraciones(valoraciones) {
-            const container = document.getElementById("ratings");
-            container.innerHTML = "";
-
-            valoraciones.forEach(valoracion => {
-                const div = document.createElement("div");
-                div.classList.add("content-item");
-                div.textContent = `${valoracion.titulo} - Calificación: ${valoracion.calificacion}`;
-                container.appendChild(div);
-            });
-        }
-
-        document.getElementById("logout-button").addEventListener("click", () => {
-            // Lógica para cerrar sesión (p. ej., redirigir o limpiar datos)
-            window.location.href = "/login"; // Redirigir a login
-        });
-
-        document.getElementById("delete-account-button").addEventListener("click", async () => {
-            const confirmacion = confirm("¿Estás seguro de que quieres eliminar tu cuenta?");
-            if (confirmacion) {
-                const respuesta = await peticionDelete(urlUserData);
-                if (respuesta) {
-                    alert("Cuenta eliminada con éxito.");
-                    window.location.href = "/login"; 
-                } else {
-                    alert("Hubo un problema al eliminar la cuenta.");
-                }
-            }
-        });
-
-        obtenerDatosUsuario();
+// Alternar la visibilidad del contenedor de actualización
+document.getElementById("btn-actualizar").addEventListener("click", () => {
+  const contenedorRegistro = document.querySelector(".contenedorRegistro");
+  if (contenedorRegistro.style.display === "none" || contenedorRegistro.style.display === "") {
+    contenedorRegistro.style.display = "flex"; // Mostrar
+  } else {
+    contenedorRegistro.style.display = "none"; // Ocultar
+  }
+});
+document.addEventListener("DOMContentLoaded", mostrarDatosUsuario);

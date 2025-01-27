@@ -1,0 +1,153 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: url("/Background/fondoNesflis.png");
+    background-size: cover;
+    color: white;
+    font-family: "Poppins", sans-serif;
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+}
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: white;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: black;
+}
+
+#fila {
+    display: flex;
+    flex-direction: column;
+}
+#info h1{
+    margin-top: 10px;
+}
+
+.col1 {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.col2 {
+    border-left: #004aad;
+    width: 35%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.botones{
+    width: 20vw;
+    display: flex;
+    justify-content: space-around;
+    gap: 15px;
+}
+#imagen {
+    width: 15vw;
+    height: 30vh;
+    overflow: hidden;
+    border: 2px solid #292482ab;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#devolver{
+    color: white;
+    margin-left: 40px;
+    margin-top: 20px;
+}
+.box {
+    display: grid;
+    grid-gap: 30px;
+    grid-template-columns: repeat(3, minmax(100px, 1fr));
+    margin-top: 30px;
+    background-color: rgba(0, 0, 0, 0.295);
+    border: 2px solid rgba(0, 0, 0, 0.493);
+}
+#lista-container{
+    display: flex;
+    align-items: center;
+
+}
+
+.box a {
+    transition: transform .3s;
+}
+
+.box a:hover {
+    transition: transform .3s;
+    -ms-transform: scale(1);
+    -webkit-transform: scale(1);
+    transform: scale(1.1);
+}
+
+.box img {
+    border-radius: 2px;
+    height: 20vh;
+    width: 30vh;
+    border-radius: 20px;
+}
+.contenedorRegistro{
+    border: 1px solid #004bada9;
+    background-color: rgba(0, 0, 0, 0.442);
+    display: flex;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    width: 30vw;
+    border-radius: 5%;
+}
+.contenedorRegistro h1{
+    margin-top: 10%;
+}
+button{
+    background-color: #004aad;
+    font-family: "Poppins", sans-serif;
+    height: 5vh;
+    width: 9vw;
+    border: 1px solid #004aad;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 5%;
+    margin-bottom: 10%;
+    color: white;
+}
+#btn-eliminar{
+    background-color: red;
+    border: 1px solid red;
+    width: 10vw;
+}
+
+.contenedorRegistro input{
+    align-items: center;
+    width: 80%;
+    text-align: center;
+    font-family: "Poppins", sans-serif;
+}
+.contenedorRegistro option{
+    background-color: #004aad;
+    font-family: "Poppins", sans-serif;
+}
+#plan{
+    font-family: "Poppins", sans-serif;
+  }
+
+  

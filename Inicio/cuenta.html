@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nesflis Cuenta</title>
+    <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="/js/cuenta.js" defer></script>
+  <link rel="icon" href="/Background/Icono.png" />
+  <link rel="stylesheet" href="/css/cuenta.css">
+</head>
+
+<body>
+    <main>
+        
+        <div id="fila">
+          <a href="/Inicio/index.html"><i id="devolver" class="fa-solid fa-arrow-left fa-2x"></i></a>
+            <div class="col1">
+                <div id="imagen">
+                    <img src="/Background/logo.png" alt="" height="250vh">
+                </div>
+                <div id="info">
+                    <h1>Nombre</h1>
+                    <h3>Correo</h3>
+                </div>
+                <div class="box" id="lista-container">
+                    <a href=""><img src="https://i0.wp.com/obelde.com/wp-content/uploads/bird-box.jpg" alt=""></a>
+                <a href=""><img src="https://classic.exame.com/wp-content/uploads/2022/09/dahmer.jpg?quality=70&strip=info&w=1024" alt=""></a>
+                <a href=""><img src="https://www.cinemascomics.com/wp-content/uploads/2018/08/desencanto-wallpaper.jpg" alt=""></a>
+                  </div>
+                  <div class="plan" id="planContainer">
+                    <h1>Premim</h1>
+                    <p>Descripcion</p>
+                    <h3>$ precio</h3>
+                  </div>
+                  <div class="botones">                    
+                    <button id="btn-actualizar">Editar datos <i class="fa-solid fa-pen-to-square"></i></button>
+                    <button id="btn-eliminar">Eliminar cuenta <i class="fa-solid fa-trash"></i></button> 
+                  </div>
+                  <div class="contenedorRegistro">
+                    <h1>Actualizar datos</h1>
+                    <h3>Ingrese el nombre</h3>
+                    <input type="text" placeholder="Stefany" id="nombre">
+                    <h3>Ingrese el correo</h3>
+                    <input type="email" placeholder="correo@correo.com" id="email">
+                    <h3>Ingrese la  nueva contraseña</h3>
+                    <input type="password" placeholder="contraseña123" id="password">
+                    <h3>Seleccione un plan</h3>
+                    <select id="plan">
+                      <option value="">Cambiar plan</option>
+                    </select>
+                    <button id="btn-actualizar">Actualizar</button>
+                  </div>    
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

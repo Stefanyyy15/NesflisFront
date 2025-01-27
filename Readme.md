@@ -82,11 +82,6 @@ Este proyecto está licenciado bajo la Licencia MIT.
 
 [![Licencia MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 
-## Video
-
-https://www.youtube.com/watch?v=TxEFYcGrN1g
-
-
 ## Contacto
 
 Si tienes alguna pregunta o deseas más información, no dudes en contactarme:
