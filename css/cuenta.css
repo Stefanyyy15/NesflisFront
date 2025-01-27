@@ -114,6 +114,7 @@ body {
     gap: 10px;
     width: 30vw;
     border-radius: 5%;
+    display: none;
 }
 .contenedorRegistro h1{
     margin-top: 10%;

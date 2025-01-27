@@ -64,6 +64,7 @@ Directo al archivo
 ![alt text](Background/2.png)
 ![alt text](Background/3.png)
 ![alt text](Background/4.png)
+![alt text](Background/5.png)
 
 ## FAQs
 Lista de preguntas frecuentes:

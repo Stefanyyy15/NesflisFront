@@ -35,7 +35,7 @@ const obtenerContenidoPorId = async (idContenido) => {
 
 const mostrarDatosUsuario = async () => {
   try {
-    const usuarioId = 2; 
+    const usuarioId = 3; 
     const datosUsuario = await obtenerUsuarioPorId(usuarioId);
 
     if (!datosUsuario) return;
