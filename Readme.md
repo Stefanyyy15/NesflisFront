@@ -12,7 +12,7 @@ El frontend de Nesflis es una aplicación web desarrollada con las tecnologías 
 | ------ | --------------- |
 | 1. | Descripcion del Proyecto |
 | 2. | Requrimientos del sistema |
-| 3. | Instalaciom |
+| 3. | Instalación |
 | 4. | Diagrama ER|
 | 5. | FAQs|
 | 6. | Licencia |
@@ -39,7 +39,7 @@ Para poder ejecutar este proyecto, asegúrate de tener instalados los siguientes
 
 Puede ser cualquier editor de codigo que tengas
 
-## Instalacion
+## Instalación
 
 Clona el Proyecto
 
