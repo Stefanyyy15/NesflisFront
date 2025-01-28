@@ -1,4 +1,3 @@
-
 /* PAGINA INICIO */
 * {
   margin: 0;
@@ -46,24 +45,22 @@ img {
 }
 
 h1 {
-  padding-top: 60px;  
+  padding-top: 60px;
 }
-
 
 /* HEADER */
 header {
   position: fixed;
   top: 0;
   display: grid;  
-  grid-gap:5px;
+  grid-gap: 5px;
   grid-template-columns: 1fr 4fr 1fr;
   grid-template-areas: 
-   "nt mn mn sb . . . "; 
-   background-color: #000003;
+    "nt mn mn sb"; 
+  background-color: #000003;
   align-items: center;
   font-family: "Poppins", sans-serif;
   z-index: 5;
-  
 }
 
 .netflixLogo {
@@ -113,7 +110,6 @@ header {
   color: var(--dark);
 }
 
-
 /* MAIN CONTIANER */
 .main-container {
   padding: 20px;
@@ -131,9 +127,6 @@ header {
 }
 
 .box a:hover {
-  transition: transform .3s;
-  -ms-transform: scale(1.4);
-  -webkit-transform: scale(1.4);  
   transform: scale(1.4);
 }
 
@@ -167,14 +160,11 @@ header {
 
 .sub-links a:hover {
   color: #7575759c;
-  
 }
-
 
 .logo {
   color: var(--dark);
 }
-
 
 /* FOOTER */
 footer {
@@ -186,14 +176,13 @@ footer {
 /* MEDIA QUERIES */
 
 @media(max-width: 900px) {
-
   header {
     display: grid;
     grid-gap: 20px;
     grid-template-columns: repeat(2, 1fr);
     grid-template-areas: 
-    "nt nt nt  .  .  . sb . . . "
-    "mn mn mn mn mn mn  mn mn mn mn";
+    "nt nt nt  .  .  . sb"
+    "mn mn mn mn mn mn mn";
   }
 
   .box {
@@ -201,18 +190,16 @@ footer {
     grid-gap: 20px;
     grid-template-columns: repeat(4, minmax(100px, 1fr));
   }
-
 }
 
 @media(max-width: 700px) {
-
   header {
     display: grid;
     grid-gap: 20px;
     grid-template-columns: repeat(2, 1fr);
     grid-template-areas: 
-    "nt nt nt  .  .  . sb . . . "
-    "mn mn mn mn mn mn  mn mn mn mn";
+    "nt nt nt  .  .  . sb"
+    "mn mn mn mn mn mn mn";
   }
 
   .box {
@@ -226,11 +213,9 @@ footer {
     grid-gap: 20px;
     grid-template-columns: repeat(3, 1fr);
   }
-   
 }
 
 @media(max-width: 500px) {
-
   .wrapper {
     font-size: 15px;
   }
@@ -267,8 +252,6 @@ footer {
     font-size: 18px;
   }
 
- 
-
   .box {
     display: grid;
     grid-gap: 20px;
@@ -277,9 +260,6 @@ footer {
   }
 
   .box a:hover {
-    transition: transform .3s;
-    -ms-transform: scale(1);
-    -webkit-transform: scale(1);  
     transform: scale(1.2);
   }
 
@@ -297,9 +277,4 @@ footer {
     text-align: center;
     font-size: 15px;
   }
-
-  
-
-  
-   
 }
