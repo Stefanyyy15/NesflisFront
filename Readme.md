@@ -4,6 +4,9 @@ Este proyecto es el frontend de la plataforma de streaming Nesflis, la cual cons
 
 El frontend de Nesflis es una aplicación web desarrollada con las tecnologías de HTML, CSS y JavaScript. Esta interfaz interactúa con la API backend para proporcionar una experiencia de usuario fluida y dinámica, similar a otras plataformas de streaming populares.
 
+## Link Backend
+https://github.com/Stefanyyy15/Nesflis.git
+
 ![Logo Nesflis](Background/logo.png)
 
 ## Tabla de contenido
