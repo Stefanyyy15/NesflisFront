@@ -1,64 +1,87 @@
 // URLS
 
-const urlAdministrador = "http://localhost:8080/api/administrador";
-const urlPlanes = "http://localhost:8080/api/plan";
-const urlUsuario = "http://localhost:8080/api/usuario";
+const urlAdministrador = "http://localhost:5000/api/administrador";
+const urlPlanes = "http://localhost:5000/api/plan";
+const urlUsuario = "http://localhost:5000/api/usuario";
 
-// PETICION GET
-
-  async function peticionGet(url) {
-    try {
-      const respuesta = await fetch(url);
-      if (respuesta.ok) {
-        return await respuesta.json();
-      } else {
-        console.error("Error en la respuesta de la API");
-        return [];
+async function peticionGet(url) {
+  try {
+    console.log('Intentando fetch a:', url);
+    const respuesta = await fetch(url, {
+      credentials: 'include',  // Incluir cookies si es necesario
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJjYW1wdXNjbCIsInN1YiI6Imx1aXNAZ21haWwuY29tIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTczODA4NjUzNSwiZXhwIjoxNzM4OTUwNTM1fQ.nn4Eb-_Tv9qtGuEc9qhFeHYhY6cwPV97eVhLKcMZTkQAqSO2wdjuP2lU8nnR0mjWrrpD57K6KEx2ekE5fMNwBw'
       }
-    } catch (error) {
-      console.error("Error al realizar la petición:", error);
-      return [];
+    });
+    console.log('Estado de la respuesta:', respuesta.status);
+    if (respuesta.ok) {
+      const info = await respuesta.json();
+      return info;
+    } else {
+      console.error(`Error HTTP: ${respuesta.status}`);
+      return null;
     }
+  } catch (error) {
+    console.error("Error al realizar la petición:", error);
+    return null;
   }
+}
 
-  // PETICION POST 
+// PETICION POST
+async function peticionPost(url, data) {
+  try {
+    const respuesta = await fetch(url, {
+      method: "POST",
+      credentials: 'include',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json', // Aquí quitamos 'charset=UTF-8'
+        'Authorization': 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJjYW1wdXNjbCIsInN1YiI6Imx1aXNAZ21haWwuY29tIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTczODA4NjUzNSwiZXhwIjoxNzM4OTUwNTM1fQ.nn4Eb-_Tv9qtGuEc9qhFeHYhY6cwPV97eVhLKcMZTkQAqSO2wdjuP2lU8nnR0mjWrrpD57K6KEx2ekE5fMNwBw'
+      },
+      body: JSON.stringify(data)
+    });
 
-  async function peticionPost(url, datos) {
-    try {
-        const response = await fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(datos)
-        });
+    console.log('Estado de la respuesta POST:', respuesta.status);
 
-        if (!response.ok) {
-            throw new Error('Error al hacer la solicitud: ' + response.statusText);
-        }
-
-        return await response.json();
-    } catch (error) {
-        console.error('Error en la petición POST:', error);
-        return null;
+    if (respuesta.ok) {
+      return await respuesta.json();
+    } else {
+      console.error(`Error HTTP: ${respuesta.status}`);
+      const textoError = await respuesta.text();
+      console.error('Detalle del error:', textoError);
+      return null;
     }
+  } catch (error) {
+    console.error("Error al realizar la petición POST:", error);
+    return null;
+  }
 }
 
 
-  // PETICION PUT
+// PETICION PUT
 async function peticionPut(url, data) {
   try {
     const respuesta = await fetch(url, {
       method: "PUT",
+      credentials: 'include',
       headers: {
-        "Content-Type": "application/json",
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJjYW1wdXNjbCIsInN1YiI6Imx1aXNAZ21haWwuY29tIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTczODA4NjUzNSwiZXhwIjoxNzM4OTUwNTM1fQ.nn4Eb-_Tv9qtGuEc9qhFeHYhY6cwPV97eVhLKcMZTkQAqSO2wdjuP2lU8nnR0mjWrrpD57K6KEx2ekE5fMNwBw'
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify(data)
     });
+
+    console.log('Estado de la respuesta PUT:', respuesta.status);
+
     if (respuesta.ok) {
       return await respuesta.json();
     } else {
-      console.error("Error en la respuesta de la API");
+      console.error(`Error HTTP: ${respuesta.status}`);
+      const textoError = await respuesta.text();
+      console.error('Detalle del error:', textoError);
       return null;
     }
   } catch (error) {
@@ -70,11 +93,24 @@ async function peticionPut(url, data) {
 // PETICION DELETE
 async function peticionDelete(url) {
   try {
-    const respuesta = await fetch(url, { method: "DELETE" });
+    const respuesta = await fetch(url, {
+      method: "DELETE",
+      credentials: 'include',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJjYW1wdXNjbCIsInN1YiI6Imx1aXNAZ21haWwuY29tIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTczODA4NjUzNSwiZXhwIjoxNzM4OTUwNTM1fQ.nn4Eb-_Tv9qtGuEc9qhFeHYhY6cwPV97eVhLKcMZTkQAqSO2wdjuP2lU8nnR0mjWrrpD57K6KEx2ekE5fMNwBw'
+      }
+    });
+
+    console.log('Estado de la respuesta DELETE:', respuesta.status);
+
     if (respuesta.ok) {
       return true;
     } else {
-      console.error("Error en la respuesta de la API");
+      console.error(`Error HTTP: ${respuesta.status}`);
+      const textoError = await respuesta.text();
+      console.error('Detalle del error:', textoError);
       return false;
     }
   } catch (error) {
@@ -82,6 +118,7 @@ async function peticionDelete(url) {
     return false;
   }
 }
+
 
 // FUNCION PARA CARGAR LOS PLANES
 async function cargarPlanesDropdown() {
@@ -135,8 +172,43 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // HACER LA FUNCION PARA REGISTRAR POST !!!!!!!!!!
 
+async function registrarUsuario() {
+  // Recoger los datos del formulario
+  const nombre = document.getElementById("nombre").value;
+  const correo = document.getElementById("correo").value;
+  const contrasena = document.getElementById("contrasena").value;
+  const planId = document.getElementById("plan").value; // Selecciona el ID del plan desde un dropdown
+
+  // Crear el objeto que se enviará en la solicitud POST
+  const nuevoUsuario = {
+    nombre: nombre,
+    correo: correo,
+    contrasena: contrasena,
+    fecha_registro: new Date().toISOString(), // Fecha actual en formato ISO
+    plan: { id: planId } // Enviar solo el ID del plan
+  };
+
+  // Llamar a la función de peticionPost para registrar el nuevo usuario
+  const urlRegistrar = "http://localhost:5000/api/usuario"; // Asegúrate de que esta URL sea la correcta
+
+  const respuesta = await peticionPost(urlRegistrar, nuevoUsuario);
+
+  // Manejar la respuesta
+  if (respuesta) {
+    console.log("Usuario registrado correctamente:", respuesta);
+    alert("Usuario registrado exitosamente.");
+  } else {
+    console.error("Error al registrar el usuario.");
+    alert("Hubo un error al registrar el usuario.");
+  }
+}
 
 
+
+// michelle 
+
+
+/* 
 async function cargarAdministradores() {
   const administradores = await peticionGet("http://localhost:8080/api/administrador");
   const dropdown = document.getElementById("administrador");
@@ -301,4 +373,4 @@ async function registrarContenido(event) {
     alert("Hubo un error al registrar el contenido.");
   }
 }
-
+ */

@@ -25,43 +25,58 @@ async function peticionGet(url) {
   }
 }
 
- /*  // PETICION POST 
+// PETICION POST
+async function peticionPost(url, data) {
+  try {
+    const respuesta = await fetch(url, {
+      method: "POST",
+      credentials: 'include',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJjYW1wdXNjbCIsInN1YiI6Imx1aXNAZ21haWwuY29tIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTczODA4NjUzNSwiZXhwIjoxNzM4OTUwNTM1fQ.nn4Eb-_Tv9qtGuEc9qhFeHYhY6cwPV97eVhLKcMZTkQAqSO2wdjuP2lU8nnR0mjWrrpD57K6KEx2ekE5fMNwBw'
+      },
+      body: JSON.stringify(data)
+    });
 
-  async function peticionPost(url, data) {
-    try {
-      const respuesta = await fetch(url, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
-      if (respuesta.ok) {
-        return await respuesta.json();
-      } else {
-        console.error("Error en la respuesta de la API");
-        return null;
-      }
-    } catch (error) {
-      console.error("Error al realizar la petición POST:", error);
+    console.log('Estado de la respuesta POST:', respuesta.status);
+    
+    if (respuesta.ok) {
+      return await respuesta.json();
+    } else {
+      console.error(`Error HTTP: ${respuesta.status}`);
+      const textoError = await respuesta.text();
+      console.error('Detalle del error:', textoError);
       return null;
     }
+  } catch (error) {
+    console.error("Error al realizar la petición POST:", error);
+    return null;
   }
+}
 
-  // PETICION PUT
+// PETICION PUT
 async function peticionPut(url, data) {
   try {
     const respuesta = await fetch(url, {
       method: "PUT",
+      credentials: 'include',
       headers: {
-        "Content-Type": "application/json",
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJjYW1wdXNjbCIsInN1YiI6Imx1aXNAZ21haWwuY29tIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTczODA4NjUzNSwiZXhwIjoxNzM4OTUwNTM1fQ.nn4Eb-_Tv9qtGuEc9qhFeHYhY6cwPV97eVhLKcMZTkQAqSO2wdjuP2lU8nnR0mjWrrpD57K6KEx2ekE5fMNwBw'
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify(data)
     });
+
+    console.log('Estado de la respuesta PUT:', respuesta.status);
+
     if (respuesta.ok) {
       return await respuesta.json();
     } else {
-      console.error("Error en la respuesta de la API");
+      console.error(`Error HTTP: ${respuesta.status}`);
+      const textoError = await respuesta.text();
+      console.error('Detalle del error:', textoError);
       return null;
     }
   } catch (error) {
@@ -73,11 +88,24 @@ async function peticionPut(url, data) {
 // PETICION DELETE
 async function peticionDelete(url) {
   try {
-    const respuesta = await fetch(url, { method: "DELETE" });
+    const respuesta = await fetch(url, {
+      method: "DELETE",
+      credentials: 'include',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJjYW1wdXNjbCIsInN1YiI6Imx1aXNAZ21haWwuY29tIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTczODA4NjUzNSwiZXhwIjoxNzM4OTUwNTM1fQ.nn4Eb-_Tv9qtGuEc9qhFeHYhY6cwPV97eVhLKcMZTkQAqSO2wdjuP2lU8nnR0mjWrrpD57K6KEx2ekE5fMNwBw'
+      }
+    });
+
+    console.log('Estado de la respuesta DELETE:', respuesta.status);
+
     if (respuesta.ok) {
       return true;
     } else {
-      console.error("Error en la respuesta de la API");
+      console.error(`Error HTTP: ${respuesta.status}`);
+      const textoError = await respuesta.text();
+      console.error('Detalle del error:', textoError);
       return false;
     }
   } catch (error) {
@@ -85,7 +113,6 @@ async function peticionDelete(url) {
     return false;
   }
 }
- */
 
 // FUNCIONES PARA CARGAR IMAGENES DE INICIO
 async function peliculasInicio(url) {
